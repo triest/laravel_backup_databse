@@ -125,7 +125,7 @@
                 }
                 $rez_array[$table] = intval($row[0]);
             }
-            
+
             return $rez_array;
         }
 
@@ -162,8 +162,12 @@
 
 
                 //надо будет не запускать при вовторном захоже
-                $row2 = mysqli_fetch_row(mysqli_query($link, 'SHOW CREATE TABLE ' . $item->name));
-                $return .= "\n\n" . $row2[1] . ";\n\n";
+                if ($item->show_create == 1) {
+                    $row2 = mysqli_fetch_row(mysqli_query($link, 'SHOW CREATE TABLE ' . $item->name));
+                    $return .= "\n\n" . $row2[1] . ";\n\n";
+                    $item->show_create = 0;
+                    $item->save();
+                }
                 $counter = 1;
 
                 //Over tables
