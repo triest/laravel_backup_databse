@@ -25,7 +25,6 @@
 
             if ($request->has('database_id')) {
                 $database = Database::findOrFail(intval($request->get('database_id')));
-
             } else {
                 $database = new Database();
                 $database->name = "sakura";
@@ -42,12 +41,12 @@
                 $rez_array = $this->count_entites($database);
             }
 
-             $this->mark_tables_and_rows($database, $rez_array);
+            $this->mark_tables_and_rows($database, $rez_array);
 
 
-             $this->backup_tables($database);
+            $this->backup_tables($database);
 
-            return redirect('/backup?database_id=' . $database->id);
+            //   return redirect('/backup?database_id=' . $database->id);
 
         }
 
@@ -57,34 +56,34 @@
         {
             $count = 0;
             $array_tables = array();
+            /*
+                        $tables=Table::select('*')->where('database_id',$database->id)->where('all_rows',0)->first();
+                        dump($tables);
+            */
 
+            foreach ($rez_array as $key => $value) {
+                $count = $count + $value;
 
-            foreach ($rez_array as $item) {
-                foreach ($item as $key => $value) {
-                    $count = $count + $value;
+                if ($count <= $this->limit) {
+                    $array_tables[] = array($key => $value);
+                    $table = new  Table();
 
-                    if ($count <= $this->limit) {
-                        $array_tables[] = array($key => $value);
-                        $table = new  Table();
+                    $table->name = $key;
+                    $table->first_row = 1;
+                    $table->last_row = $value;
+                    $table->all_rows = 1;
+                    $table->save();
+                    $database->tables()->save($table);
 
-                        $table->name = $key;
-                        $table->first_row = 1;
-                        $table->last_row = $value;
-                        $table->all_rows = 1;
-                        $table->save();
-                        $database->tables()->save($table);
-
-                    } elseif ($count > $this->limit) {
-                        $table = new Table();
-                        $table->name = $key;
-                        $table->first_row = 1;
-                        $table->last_row = $value;
-                        $table->all_rows = 0;
-                        $table->save();
-                        $database->tables()->save($table);
-
-                        break 2;
-                    }
+                } elseif ($count > $this->limit) {
+                    $table = new Table();
+                    $table->name = $key;
+                    $table->first_row = 1;
+                    $table->last_row = $value;
+                    $table->all_rows = 0;
+                    $table->save();
+                    $database->tables()->save($table);
+                    break;
                 }
             }
             return $array_tables;
@@ -96,12 +95,23 @@
             $link = mysqli_connect($this->host, $this->user, $this->pass, $this->dbname);
 
 
+            $tables_temp = Table::select('*')->where('database_id', $database->id)->where('all_rows', 1)->get();
+
             if ($tables == '*') {
                 $tables = array();
                 $result = mysqli_query($link, 'SHOW TABLES');
                 while ($row = mysqli_fetch_row($result)) {
+
+                    foreach ($tables_temp as $item) {
+
+                        if ($item->name == $row[0] && $item->all_rows == 1) {  // пропускаем, если таблица скопированна полностью
+                            continue 2;
+                        }
+                    }
                     $tables[] = $row[0];
                 }
+
+
             } else {
                 $tables = is_array($tables) ? $tables : explode(',', $tables);
             }
@@ -113,8 +123,9 @@
                 } catch (\Exception $exception) {
                     continue;
                 }
-                $rez_array[] = [$table => intval($row[0])];
+                $rez_array[$table] = intval($row[0]);
             }
+            
             return $rez_array;
         }
 
