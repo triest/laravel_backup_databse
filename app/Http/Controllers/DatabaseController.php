@@ -2,6 +2,8 @@
 
     namespace App\Http\Controllers;
 
+    use App\Database;
+    use App\Table;
     use Illuminate\Http\Request;
 
     class DatabaseController extends Controller
@@ -15,48 +17,20 @@
                 $link;
 
 
+        /**
+         * @param Request $request
+         */
         public function index(Request $request)
         {
-            if ($request->has('table')) {
-                $table = $request->get('table');
+
+            if ($request->has('database_id')) {
+                $database = Database::findOrFail(intval($request->get('database_id')));
+
             } else {
-                $table = null;
+                $database = new Database();
+                $database->name = "sakura";
+                $database->save();
             }
-
-            if ($request->has('row')) {
-                $row = $request->get('row');
-            } else {
-                $row = null;
-            }
-
-            if ($request->has('nofirst')) {
-                $first = false;
-            } else {
-                $first = true;
-            }
-
-            if ($request->has('fileName')) {
-                $fileName = $request->get('fileName');
-            } else {
-                $fileName = null;
-            }
-
-            if ($request->has('num_rows')) {
-                $num_rows = intval($request->get('num_rows'));
-            }
-
-            if ($request->has('num_tables')) {
-                $num_tables = intval($request->get('num_tables'));
-            }
-
-            if ($request->has('last_table')) {
-                $last_table = $request->get('last_table');
-            }
-
-            if ($request->has('last_row')) {
-                $last_row = $request->get('last_row');
-            }
-
 
             $this->host = '127.0.0.1';
             $this->user = 'root';
@@ -65,30 +39,50 @@
 
             $rez_array = [];
             if (!isset($num_rows) || !isset($num_tables)) {
-                $rez_array = $this->count_entites();
+                $rez_array = $this->count_entites($database);
             }
-            //dump($rez_array);
-            $array_tables = $this->mark_tables_and_rows($rez_array);
-            $this->backup_tables($array_tables);
 
+             $this->mark_tables_and_rows($database, $rez_array);
+
+
+             $this->backup_tables($database);
+
+            return redirect('/backup?database_id=' . $database->id);
 
         }
 
         public $limit = 21;
 
-        function mark_tables_and_rows($rez_array)
+        function mark_tables_and_rows($database, $rez_array)
         {
             $count = 0;
-
             $array_tables = array();
+
+
             foreach ($rez_array as $item) {
-                //dump($item);
                 foreach ($item as $key => $value) {
                     $count = $count + $value;
 
                     if ($count <= $this->limit) {
                         $array_tables[] = array($key => $value);
+                        $table = new  Table();
+
+                        $table->name = $key;
+                        $table->first_row = 1;
+                        $table->last_row = $value;
+                        $table->all_rows = 1;
+                        $table->save();
+                        $database->tables()->save($table);
+
                     } elseif ($count > $this->limit) {
+                        $table = new Table();
+                        $table->name = $key;
+                        $table->first_row = 1;
+                        $table->last_row = $value;
+                        $table->all_rows = 0;
+                        $table->save();
+                        $database->tables()->save($table);
+
                         break 2;
                     }
                 }
@@ -97,9 +91,10 @@
         }
 
 
-        function count_entites($tables = "*")
+        function count_entites(Database $database, $tables = "*") // считат
         {
             $link = mysqli_connect($this->host, $this->user, $this->pass, $this->dbname);
+
 
             if ($tables == '*') {
                 $tables = array();
@@ -112,87 +107,105 @@
             }
             $rez_array = array();
             foreach ($tables as $table) {
-                $result = mysqli_query($link, 'select count(*) from ' . $table);
-                $row = mysqli_fetch_row($result);
+                try {
+                    $result = mysqli_query($link, 'select count(*) from ' . $table);
+                    $row = mysqli_fetch_row($result);
+                } catch (\Exception $exception) {
+                    continue;
+                }
                 $rez_array[] = [$table => intval($row[0])];
-
-
             }
             return $rez_array;
         }
 
 
-        function backup_tables($array_tables)
+        function backup_tables(Database $database)
         {
-            //dump($array_tables);
             $link = mysqli_connect($this->host, $this->user, $this->pass, $this->dbname);
 
             if (mysqli_connect_errno()) {
                 echo "Failed to connect to MySQL: " . mysqli_connect_error();
                 exit;
             }
-
             mysqli_query($link, "SET NAMES 'utf8'");
+            $tables = $database->tables()->get();
+            $return = "";
+            foreach ($tables as $item) {
 
-            $return="";
-            foreach ($array_tables as $key => $value) {
-                //      dump($key);
-                //dump($value);
-                foreach ($value as $key2 => $item) {
+                $qwery_string = 'select * from ' . $item->name;
+                if ($item->all_rows != 1) {
+                    $qwery_string .= ' limit ' . $item->last_row;
+                    $qwery_string .= ' offset ' . intval($item->first_row - 1);
+                }
 
-                    $result = mysqli_query($link, 'SELECT * FROM ' . $key2 . 'limit ' . $item);
 
-                    $result = mysqli_query($link, 'SELECT * FROM ' . $key2);
+                // $result = mysqli_query($link, $qwery_string);
+                try {
+                    $result = mysqli_query($link, $qwery_string);
+
                     $num_fields = mysqli_num_fields($result);
                     $num_rows = mysqli_num_rows($result);
-
-                    $row2 = mysqli_fetch_row(mysqli_query($link, 'SHOW CREATE TABLE ' . $key2));
-                    $return .= "\n\n" . $row2[1] . ";\n\n";
-                    $counter = 1;
-
-                    //Over tables
-                    for ($i = 0; $i < $num_fields; $i++) {   //Over rows
-                        while ($row = mysqli_fetch_row($result)) {
-                            if ($counter == 1) {
-                                $return .= 'INSERT INTO ' . $key2 . ' VALUES(';
-                            } else {
-                                $return .= '(';
-                            }
-
-                            //Over fields
-                            for ($j = 0; $j < $num_fields; $j++) {
-                                $row[$j] = addslashes($row[$j]);
-                                $row[$j] = str_replace("\n", "\\n", $row[$j]);
-                                if (isset($row[$j])) {
-                                    $return .= '"' . $row[$j] . '"';
-                                } else {
-                                    $return .= '""';
-                                }
-                                if ($j < ($num_fields - 1)) {
-                                    $return .= ',';
-                                }
-                            }
-
-                            if ($num_rows == $counter) {
-                                $return .= ");\n";
-                            } else {
-                                $return .= "),\n";
-                            }
-                            ++$counter;
-                        }
-                    }
-                    $return .= "\n\n\n";
+                } catch (\Exception $exception) {
+                    exit(1);
                 }
+
+
+                //надо будет не запускать при вовторном захоже
+                $row2 = mysqli_fetch_row(mysqli_query($link, 'SHOW CREATE TABLE ' . $item->name));
+                $return .= "\n\n" . $row2[1] . ";\n\n";
+                $counter = 1;
+
+                //Over tables
+                for ($i = 0; $i < $num_fields; $i++) {   //Over rows
+                    while ($row = mysqli_fetch_row($result)) {
+                        if ($counter == 1) {
+
+                            $return .= 'INSERT INTO ' . $item->name . ' VALUES(';
+                        } else {
+                            $return .= '(';
+                        }
+
+                        //Over fields
+                        for ($j = 0; $j < $num_fields; $j++) {
+                            $row[$j] = addslashes($row[$j]);
+                            $row[$j] = str_replace("\n", "\\n", $row[$j]);
+                            if (isset($row[$j])) {
+                                $return .= '"' . $row[$j] . '"';
+                            } else {
+                                $return .= '""';
+                            }
+                            if ($j < ($num_fields - 1)) {
+                                $return .= ',';
+                            }
+                        }
+
+                        if ($num_rows == $counter) {
+                            $return .= ");\n";
+                        } else {
+                            $return .= "),\n";
+                        }
+                        ++$counter;
+                    }
+                }
+                $return .= "\n\n\n";
+
             }
 
-            $fileName = 'db-backup-' . time() . '-' . '.sql';
+
+            if ($database->filename == "" || $database->filename == null) {
+                $fileName = $fileName = 'backup-' . time() . '-' . '.sql';
+                $database->filename = $fileName;
+                $database->save();
+            } else {
+                $fileName = $database->filename;
+            }
+
             $handle = fopen($fileName, 'w+');
             fwrite($handle, $return);
             if (fclose($handle)) {
-                //  echo "Done, the file name is: " . $fileName;
-                //exit;
                 return $fileName;
             }
+
             return $fileName;
         }
 
