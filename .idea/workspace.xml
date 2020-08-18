@@ -2,15 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b774f07d-ff95-4523-827d-af8deeac849a" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/app/Services/SDatabaseBackup.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/migrations/2020_08_18_203516_add_default_valurs_to_tables.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/backup-1597782395-.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/base_coper.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/base_coper.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/DatabaseController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/DatabaseController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -56,11 +49,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="DatabaseController.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="DatabaseController.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/DatabaseController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="306">
-              <caret line="76" column="32" selection-start-line="76" selection-start-column="32" selection-end-line="76" selection-end-column="32" />
+            <state relative-caret-position="595">
+              <caret line="48" column="19" lean-forward="true" selection-start-line="48" selection-start-column="19" selection-end-line="48" selection-end-column="19" />
               <folding>
                 <element signature="e#48#65#0#PHP" expanded="true" />
               </folding>
@@ -77,7 +70,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="2020_08_18_203516_add_default_valurs_to_tables.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="2020_08_18_203516_add_default_valurs_to_tables.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/database/migrations/2020_08_18_203516_add_default_valurs_to_tables.php">
           <provider selected="true" editor-type-id="text-editor">
             <state>
@@ -179,8 +172,8 @@
         <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/database/migrations/2020_08_18_203516_add_default_valurs_to_tables.php" />
         <option value="$PROJECT_DIR$/composer.json" />
-        <option value="$PROJECT_DIR$/app/Http/Controllers/DatabaseController.php" />
         <option value="$PROJECT_DIR$/public/backup-1597782395-.sql" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/DatabaseController.php" />
       </list>
     </option>
   </component>
@@ -460,11 +453,18 @@
       <option name="project" value="LOCAL" />
       <updated>1597694431986</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Fix add big tables.">
+      <created>1597783916957</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1597783916957</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="73683000" />
+    <option name="totallyTimeSpent" value="74453000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -547,7 +547,8 @@
     <MESSAGE value="Add pass complited table" />
     <MESSAGE value="delete create table SQL quewy if table already exist." />
     <MESSAGE value="Create backup, but has a doubles" />
-    <option name="LAST_COMMIT_MESSAGE" value="Create backup, but has a doubles" />
+    <MESSAGE value="Fix add big tables." />
+    <option name="LAST_COMMIT_MESSAGE" value="Fix add big tables." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -555,8 +556,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/public/db-backup-1597511806-.sql" />
-    <entry file="file://$PROJECT_DIR$/public/db-backup-1597516323-.sql" />
     <entry file="file://$PROJECT_DIR$/public/db-backup-1597526877-.sql" />
     <entry file="file://$PROJECT_DIR$/routes/web.php">
       <provider selected="true" editor-type-id="text-editor">
@@ -703,16 +702,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/DatabaseController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="76" column="32" selection-start-line="76" selection-start-column="32" selection-end-line="76" selection-end-column="32" />
-          <folding>
-            <element signature="e#48#65#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/public/backup-1597782395-.sql">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="776">
@@ -724,6 +713,30 @@
       <provider selected="true" editor-type-id="text-editor">
         <state>
           <caret lean-forward="true" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/backup-1597783985-.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="776">
+          <caret line="757" lean-forward="true" selection-start-line="757" selection-end-line="757" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/backup-1597784215-.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret lean-forward="true" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/DatabaseController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="595">
+          <caret line="48" column="19" lean-forward="true" selection-start-line="48" selection-start-column="19" selection-end-line="48" selection-end-column="19" />
+          <folding>
+            <element signature="e#48#65#0#PHP" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

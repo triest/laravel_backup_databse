@@ -46,9 +46,8 @@
             }
             $this->mark_tables_and_rows($database, $rez_array);
 
-            dump($database);
             $this->backup_tables($database);
-            //    return redirect('/backup?database_id=' . $database->id);
+            return redirect('/backup?database_id=' . $database->id);
 
         }
 
@@ -60,8 +59,6 @@
             $array_tables = array();
             foreach ($rez_array as $key => $value) {
 
-                dump($rez_array);
-                dump($key);
                 $table = Table::select(['*'])->where('name', $key)->where('database_id', $database->id)->first();
                 if ($table == null) {
                     $table = new Table();
@@ -79,7 +76,6 @@
 
                     $table->name = $key;
                     $table->first_row = 1;
-                    dump($table->last_row);
                     if (($table->last_row + $this->limit) > $value) {
                         $table->last_row = $value;
                     } else {
