@@ -161,6 +161,11 @@
             /**/
 
             foreach ($tables as $item) {
+                $lock = "lock tables ' . $item->name .  WRITE";
+
+                $result = mysqli_query($link, $lock);
+
+
                 $item->save();
                 $qwery_string = 'select * from ' . $item->name;
 
@@ -234,6 +239,9 @@
                 }
                 $return .= "\n\n\n";
 
+                $lock = "unlock tables ' . $item->name .  WRITE";
+
+                $result = mysqli_query($link, $lock);
             }
 
 

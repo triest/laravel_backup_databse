@@ -24,17 +24,6 @@
          */
         public function index(Request $request)
         {
-
-            /*
-            if ($request->has('database_id')) {
-                $database = Database::findOrFail(intval($request->get('database_id')));
-            } else {
-                $database = new Database();
-                $database->name = "sakura";
-                $database->save();
-            }
-            */
-
             $sbackup = new SDatabaseBackup();
             $database = $sbackup->backup($request->get('database_id'));
             if ($database instanceof Database) {
