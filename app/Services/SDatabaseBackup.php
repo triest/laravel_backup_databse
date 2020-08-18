@@ -15,15 +15,16 @@
 
     class SDatabaseBackup
     {
-
         public $host,
                 $user = 'root',
                 $pass = '',
                 $dbname = 'sakura',
                 $link;
+        public $database = null;
 
         public function backup($database_id = null)
         {
+
             if ($database_id != null) {
                 $database = Database::findOrFail(intval($database_id));
             } else {
@@ -32,24 +33,78 @@
                 $database->save();
             }
 
-
             $this->host = '127.0.0.1';
             $this->user = 'root';
             $this->pass = '';
             $this->dbname = 'sakura';
 
-            $rez_array = [];
-            if (!isset($num_rows) || !isset($num_tables)) {
-                $rez_array = $this->count_entities($database);
-            }
+            $rez_array = $this->count_entities($database);
+
             if (empty($rez_array)) {
                 return true;
             }
             $this->mark_tables_and_rows($database, $rez_array);
 
-
             $this->backup_tables($database);
-            return $database->id;
+
+            return $database;
+        }
+
+        public $limit = 21;
+
+        function mark_tables_and_rows($database, $rez_array)
+        {
+            $count = 0;
+            $array_tables = array();
+            foreach ($rez_array as $key => $value) {
+
+                $table = Table::select(['*'])->where('name', $key)->where('database_id', $database->id)->first();
+                if ($table == null) {
+                    $table = new Table();
+                    $table->name = $key;
+                    $table->num_rows = $value;
+                    $table->database_id = $database->id;
+                    $table->save();
+                }
+                $count = $count + $value;
+
+
+                if ($value <= $this->limit) {  //TODO а модет быть и тут
+                    $array_tables[] = array($key => $value);
+
+
+                    $table->name = $key;
+                    $table->first_row = 1;
+                    if (($table->last_row + $this->limit) > $value) {
+                        $table->last_row = $value;
+                    } else {
+                        $table->last_row = $table->last_row + $this->limit;
+                    }
+                    $table->all_rows = 1;
+                    $table->save();
+                    $database->tables()->save($table);
+
+                } elseif ($count > $this->limit) {
+
+                    $table->name = $key;
+                    $table->first_row = 1;
+
+                    if ($table->last_row + $this->limit < $table->num_rows) {
+                        $table->last_row = $table->last_row + $this->limit;
+                        $table->all_rows = 0;
+                    } else {
+                        $table->last_row = $table->num_rows;
+                        $table->all_rows = 1;
+                    }
+
+
+                    $table->save();
+                    $database->tables()->save($table);
+
+                    break;
+                }
+            }
+            return $array_tables;
         }
 
 
@@ -61,8 +116,7 @@
             $tables = array();
             $result = mysqli_query($link, 'SHOW TABLES');
             while ($row = mysqli_fetch_row($result)) {
-                $tableTemp = Table::select(['*'])->where('name', $row[0])->first();
-
+                $tableTemp = Table::select(['*'])->where("database_id", $database->id)->where('name', $row[0])->first();
                 if ($tableTemp != null) {
                     if ($tableTemp->last_row != $tableTemp->num_rows) {
                         $tables[] = $row[0];
@@ -109,10 +163,12 @@
             foreach ($tables as $item) {
                 $item->save();
                 $qwery_string = 'select * from ' . $item->name;
-                if ($item->all_rows != 1) {
-                    $qwery_string .= ' limit ' . $this->limit;                //TODO косяк здесь! Он делает ежное число проходов, но не отступает.
+
+                $qwery_string .= ' limit ' . $this->limit;                //TODO косяк здесь! Он делает ежное число проходов, но не отступает.
+                if ($item->last_row != null && $item->last_row > 1) {
                     $qwery_string .= ' offset ' . intval($item->last_row - 1); //TODO или тут.
                 }
+
 
                 if ($item->num_rows == $item->last_row) {
                     $item->completed = 1;
@@ -123,7 +179,6 @@
                     $item->completed = 1;
                     $item->save();
                 }
-           //     dump($qwery_string);
 
 
                 try {
@@ -193,41 +248,5 @@
             }
 
             return $fileName;
-        }
-
-
-        public $limit = 21;
-
-        function mark_tables_and_rows($database, $rez_array)
-        {
-            $count = 0;
-            $array_tables = array();
-            foreach ($rez_array as $key => $value) {
-                $count = $count + $value;
-
-                if ($count <= $this->limit) {  //TODO а модет быть и тут
-                    $array_tables[] = array($key => $value);
-                    $table = new  Table();
-                    $table->num_rows = $value;
-                    $table->name = $key;
-                    $table->first_row = 1;
-                    $table->last_row = $value;
-                    $table->all_rows = 1;
-                    $table->save();
-                    $database->tables()->save($table);
-
-                } elseif ($count > $this->limit) {
-                    $table = new Table();
-                    $table->name = $key;
-                    $table->first_row = 1;
-                    $table->last_row = $value;
-                    $table->num_rows = $value;
-                    $table->all_rows = 0;
-                    $table->save();
-                    $database->tables()->save($table);
-                    break;
-                }
-            }
-            return $array_tables;
         }
     }
