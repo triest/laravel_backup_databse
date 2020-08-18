@@ -1,36 +1,37 @@
 <?php
+    /**
+     * Created by PhpStorm.
+     * User: triest
+     * Date: 18.08.2020
+     * Time: 20:16
+     */
 
-    namespace App\Http\Controllers;
+    namespace App\Services;
+
 
     use App\Database;
     use App\Table;
-    use Illuminate\Http\Request;
-    use PhpParser\Node\Expr\Ternary;
 
-    class DatabaseController extends Controller
+
+    class SDatabaseBackup
     {
-        //
 
         public $host,
-                $user,
-                $pass,
-                $dbname,
+                $user = 'root',
+                $pass = '',
+                $dbname = 'sakura',
                 $link;
 
-
-        /**
-         * @param Request $request
-         */
-        public function index(Request $request)
+        public function backup($database_id = null)
         {
-
-            if ($request->has('database_id')) {
-                $database = Database::findOrFail(intval($request->get('database_id')));
+            if ($database_id != null) {
+                $database = Database::findOrFail(intval($database_id));
             } else {
                 $database = new Database();
                 $database->name = "sakura";
                 $database->save();
             }
+
 
             $this->host = '127.0.0.1';
             $this->user = 'root';
@@ -42,74 +43,13 @@
                 $rez_array = $this->count_entities($database);
             }
             if (empty($rez_array)) {
-                return "finish";
+                return true;
             }
             $this->mark_tables_and_rows($database, $rez_array);
 
-            dump($database);
+
             $this->backup_tables($database);
-            //    return redirect('/backup?database_id=' . $database->id);
-
-        }
-
-        public $limit = 21;
-
-        function mark_tables_and_rows($database, $rez_array)
-        {
-            $count = 0;
-            $array_tables = array();
-            foreach ($rez_array as $key => $value) {
-
-                dump($rez_array);
-                dump($key);
-                $table = Table::select(['*'])->where('name', $key)->where('database_id', $database->id)->first();
-                if ($table == null) {
-                    $table = new Table();
-                    $table->name = $key;
-                    $table->num_rows = $value;
-                    $table->database_id = $database->id;
-                    $table->save();
-                }
-                $count = $count + $value;
-
-
-                if ($value <= $this->limit) {  //TODO а модет быть и тут
-                    $array_tables[] = array($key => $value);
-
-
-                    $table->name = $key;
-                    $table->first_row = 1;
-                    dump($table->last_row);
-                    if (($table->last_row + $this->limit) > $value) {
-                        $table->last_row = $value;
-                    } else {
-                        $table->last_row = $table->last_row + $this->limit;
-                    }
-                    $table->all_rows = 1;
-                    $table->save();
-                    $database->tables()->save($table);
-
-                } elseif ($count > $this->limit) {
-
-                    $table->name = $key;
-                    $table->first_row = 1;
-
-                    if ($table->last_row + $this->limit < $table->num_rows) {
-                        $table->last_row = $table->last_row + $this->limit;
-                        $table->all_rows = 0;
-                    } else {
-                        $table->last_row = $table->num_rows;
-                        $table->all_rows = 1;
-                    }
-
-
-                    $table->save();
-                    $database->tables()->save($table);
-
-                    break;
-                }
-            }
-            return $array_tables;
+            return $database->id;
         }
 
 
@@ -121,7 +61,8 @@
             $tables = array();
             $result = mysqli_query($link, 'SHOW TABLES');
             while ($row = mysqli_fetch_row($result)) {
-                $tableTemp = Table::select(['*'])->where("database_id", $database->id)->where('name', $row[0])->first();
+                $tableTemp = Table::select(['*'])->where('name', $row[0])->first();
+
                 if ($tableTemp != null) {
                     if ($tableTemp->last_row != $tableTemp->num_rows) {
                         $tables[] = $row[0];
@@ -182,6 +123,7 @@
                     $item->completed = 1;
                     $item->save();
                 }
+           //     dump($qwery_string);
 
 
                 try {
@@ -253,5 +195,39 @@
             return $fileName;
         }
 
-    }
 
+        public $limit = 21;
+
+        function mark_tables_and_rows($database, $rez_array)
+        {
+            $count = 0;
+            $array_tables = array();
+            foreach ($rez_array as $key => $value) {
+                $count = $count + $value;
+
+                if ($count <= $this->limit) {  //TODO а модет быть и тут
+                    $array_tables[] = array($key => $value);
+                    $table = new  Table();
+                    $table->num_rows = $value;
+                    $table->name = $key;
+                    $table->first_row = 1;
+                    $table->last_row = $value;
+                    $table->all_rows = 1;
+                    $table->save();
+                    $database->tables()->save($table);
+
+                } elseif ($count > $this->limit) {
+                    $table = new Table();
+                    $table->name = $key;
+                    $table->first_row = 1;
+                    $table->last_row = $value;
+                    $table->num_rows = $value;
+                    $table->all_rows = 0;
+                    $table->save();
+                    $database->tables()->save($table);
+                    break;
+                }
+            }
+            return $array_tables;
+        }
+    }
