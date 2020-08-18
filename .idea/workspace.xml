@@ -2,10 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b774f07d-ff95-4523-827d-af8deeac849a" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/database/migrations/2020_08_16_190605_add_num_rows_to_tables.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/DatabaseController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/DatabaseController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/backup-1597591551-.sql" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -36,7 +35,7 @@
       <file leaf-file-name="Table.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/Table.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state>
+            <state relative-caret-position="255">
               <caret line="15" column="36" selection-start-line="15" selection-start-column="36" selection-end-line="15" selection-end-column="36" />
             </state>
           </provider>
@@ -54,11 +53,20 @@
       <file leaf-file-name="DatabaseController.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/DatabaseController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="730">
-              <caret line="223" column="5" lean-forward="true" selection-start-line="223" selection-start-column="5" selection-end-line="223" selection-end-column="5" />
+            <state relative-caret-position="289">
+              <caret line="66" column="16" selection-start-line="66" selection-start-column="16" selection-end-line="66" selection-end-column="16" />
               <folding>
                 <element signature="e#48#65#0#PHP" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name=".gitignore" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/.gitignore">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="119">
+              <caret line="7" column="6" selection-start-line="7" selection-start-column="6" selection-end-line="7" selection-end-column="6" />
             </state>
           </provider>
         </entry>
@@ -67,22 +75,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>users</find>
-      <find>CREATE TABLE</find>
-      <find>INSERT INTO users VALUES</find>
-      <find>view_history</find>
-      <find>messages</find>
-      <find>INSERT INTO messages</find>
-      <find>CREATE TABLE `messages`</find>
-      <find>interest</find>
-      <find>INSERT INTO albums VALUES(&quot;11&quot;,&quot;2&quot;,&quot;Основной альбом&quot;,</find>
-      <find>seach_settings</find>
-      <find>INSERT INTO dialogs</find>
-      <find>dialogs</find>
-      <find>all_rows</find>
-      <find>INSERT INTO targets VALUES</find>
-      <find>die</find>
-      <find>search_target</find>
       <find>comple</find>
       <find>user_interest</find>
       <find>INSERT INTO migrations VALUES(&quot;1&quot;,&quot;2014_10_12_000000_create_users_table&quot;,&quot;1&quot;</find>
@@ -95,9 +87,28 @@
       <find>INSERT INTO albums_photo VALUES(&quot;16&quot;,&quot;11&quot;,&quot;329f815efe0d0320b3ad6c48a69567f9.png&quot;,&quot;&quot;,&quot;2020-06-08 20:12:02&quot;,&quot;2020-06-08 20:12:02&quot;</find>
       <find>dum</find>
       <find>user_target</find>
-      <find>backup_tables</find>
       <find>CREATE TABLE `requwest` (</find>
+      <find>backup_tables</find>
+      <find>view_history</find>
+      <find>CREATE TABLE `migrations` (</find>
+      <find>CREATE TABLE `messages` (</find>
+      <find>INSERT INTO messages VALUES</find>
+      <find>migrations</find>
+      <find>INSERT INTO migrations VALUES(&quot;1&quot;,&quot;2014_10_12_000000_create_users_table&quot;,&quot;1&quot;),</find>
+      <find>backup</find>
+      <find>INSERT INTO users VALUES(&quot;2&quot;,&quot;565656q&quot;,</find>
+      <find>INSERT INTO messages</find>
+      <find>INSERT INTO messages VALUES(&quot;23&quot;,&quot;2&quot;,&quot;3&quot;,&quot;er&quot;,&quot;1&quot;,&quot;2020-06-14 21:31:35&quot;,&quot;2020-06-29 19:09:32&quot;),</find>
+      <find>INSERT INTO albums</find>
+      <find>INSERT INTO albums_photo</find>
+      <find>INSERT INTO messages VALUES(&quot;111&quot;,&quot;2&quot;,&quot;3&quot;,&quot;888&quot;,&quot;0&quot;,&quot;2020-07-06 13:02:57&quot;,&quot;2020-07-06 13:02:57&quot;);</find>
+      <find>INSERT INTO messages</find>
+      <find>-&gt;last_row</find>
+      <find>TODO</find>
     </findStrings>
+    <dirStrings>
+      <dir>E:\openServer535\OSPanel\domains\base_coper\</dir>
+    </dirStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -115,7 +126,6 @@
         <option value="$PROJECT_DIR$/database/migrations/2020_08_16_093131_add_foregin_key_from_tables_to_databases.php" />
         <option value="$PROJECT_DIR$/database/migrations/2020_08_16_125934_add_filename_to_databases_table.php" />
         <option value="$PROJECT_DIR$/app/Database.php" />
-        <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/database/migrations/2020_08_16_155331_add_create_table_fild_to_tables.php" />
         <option value="$PROJECT_DIR$/public/backup-1597591551-.sql" />
         <option value="$PROJECT_DIR$/public/backup-1597602515-.sql" />
@@ -124,6 +134,7 @@
         <option value="$PROJECT_DIR$/public/backup-1597605688-.sql" />
         <option value="$PROJECT_DIR$/public/backup-1597680480-.sql" />
         <option value="$PROJECT_DIR$/public/backup-1597693570-.sql" />
+        <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/DatabaseController.php" />
       </list>
     </option>
@@ -268,24 +279,6 @@
             <path>
               <item name="base_coper" type="b2602c69:ProjectViewProjectNode" />
               <item name="base_coper" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="base_coper" type="b2602c69:ProjectViewProjectNode" />
-              <item name="base_coper" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="Http" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="base_coper" type="b2602c69:ProjectViewProjectNode" />
-              <item name="base_coper" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="Http" type="462c0819:PsiDirectoryNode" />
-              <item name="Controllers" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="base_coper" type="b2602c69:ProjectViewProjectNode" />
-              <item name="base_coper" type="462c0819:PsiDirectoryNode" />
               <item name="database" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -358,7 +351,9 @@
       <workItem from="1597424152921" duration="5694000" />
       <workItem from="1597479518518" duration="19778000" />
       <workItem from="1597568148609" duration="28425000" />
-      <workItem from="1597679464836" duration="13540000" />
+      <workItem from="1597679464836" duration="13782000" />
+      <workItem from="1597700196338" duration="2045000" />
+      <workItem from="1597768676176" duration="250000" />
     </task>
     <task id="LOCAL-00001" summary="Add backup first part">
       <created>1597588131518</created>
@@ -381,11 +376,18 @@
       <option name="project" value="LOCAL" />
       <updated>1597593968933</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Create backup, but has a doubles">
+      <created>1597694431986</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1597694431986</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="67437000" />
+    <option name="totallyTimeSpent" value="69974000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -403,7 +405,6 @@
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="right" id="Database" order="3" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.32946146" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
@@ -411,34 +412,35 @@
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="bottom" id="Messages" order="7" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info anchor="bottom" id="Messages" order="7" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32946146" />
     </layout>
     <layout-to-restore>
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="bottom" id="Docker" order="8" show_stripe_button="false" />
       <window_info id="npm" order="2" side_tool="true" />
-      <window_info anchor="bottom" id="Run" order="3" />
+      <window_info anchor="bottom" id="Inspection" order="6" weight="0.4" />
       <window_info anchor="right" id="Remote Host" order="3" />
-      <window_info id="Favorites" order="3" side_tool="true" />
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="bottom" id="TODO" order="7" />
-      <window_info anchor="bottom" id="Version Control" order="13" />
+      <window_info anchor="bottom" id="Run" order="3" />
+      <window_info anchor="bottom" id="Cvs" order="5" weight="0.25" />
       <window_info anchor="bottom" id="Find" order="2" weight="0.32946146" />
-      <window_info anchor="bottom" id="Migrations" order="9" />
-      <window_info anchor="bottom" id="Messages" order="0" />
+      <window_info anchor="right" id="Database" order="4" />
       <window_info anchor="bottom" id="Terminal" order="11" weight="0.32946146" />
       <window_info anchor="bottom" id="Event Log" order="12" side_tool="true" />
       <window_info anchor="bottom" id="Database Changes" order="10" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Cvs" order="5" weight="0.25" />
+      <window_info anchor="bottom" id="Version Control" order="13" />
       <window_info anchor="bottom" id="Debug" order="4" weight="0.4" />
       <window_info anchor="bottom" id="Message" order="1" />
-      <window_info anchor="right" id="Database" order="4" />
-      <window_info anchor="bottom" id="Inspection" order="6" weight="0.4" />
+      <window_info anchor="bottom" id="Messages" order="0" />
+      <window_info anchor="bottom" id="Migrations" order="9" />
+      <window_info id="Favorites" order="3" side_tool="true" />
     </layout-to-restore>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -451,7 +453,8 @@
     <MESSAGE value="Add backup first part" />
     <MESSAGE value="Add pass complited table" />
     <MESSAGE value="delete create table SQL quewy if table already exist." />
-    <option name="LAST_COMMIT_MESSAGE" value="delete create table SQL quewy if table already exist." />
+    <MESSAGE value="Create backup, but has a doubles" />
+    <option name="LAST_COMMIT_MESSAGE" value="Create backup, but has a doubles" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -459,52 +462,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/database/migrations/2020_08_16_155331_add_create_table_fild_to_tables.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="544">
-          <caret line="34" selection-start-line="34" selection-end-line="34" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/database/migrations/2020_08_16_125934_add_filename_to_databases_table.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="17" column="90" selection-start-line="17" selection-start-column="13" selection-end-line="17" selection-end-column="90" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/backup-1597605688-.sql">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/.env">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="10" column="12" selection-start-line="10" selection-start-column="8" selection-end-line="10" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Controller.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="13" selection-start-line="13" selection-end-line="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2567">
-          <caret line="151" column="9" lean-forward="true" selection-start-line="144" selection-start-column="6" selection-end-line="151" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/routes/web.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="20" column="19" selection-start-line="20" selection-start-column="13" selection-end-line="20" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/db-backup-1597526877-.sql" />
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/DatabaseController.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2329">
@@ -594,19 +551,9 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/public/db-backup-1597580401-.sql" />
-    <entry file="file://$PROJECT_DIR$/.gitignore">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="6" column="4" selection-start-line="6" selection-start-column="4" selection-end-line="6" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/storage/logs/laravel.log">
-      <provider selected="true" editor-type-id="LogFileEditorProvider" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/Table.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state>
+        <state relative-caret-position="255">
           <caret line="15" column="36" selection-start-line="15" selection-start-column="36" selection-end-line="15" selection-end-column="36" />
         </state>
       </provider>
@@ -643,13 +590,7 @@
     <entry file="file://$PROJECT_DIR$/public/backup-1597603169-.sql" />
     <entry file="file://$PROJECT_DIR$/public/backup-1597605075-.sql" />
     <entry file="file://$PROJECT_DIR$/public/backup-1597605255-.sql" />
-    <entry file="file://$PROJECT_DIR$/public/backup-1597605688-.sql">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="776">
-          <caret line="275" lean-forward="true" selection-start-line="275" selection-end-line="275" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/public/backup-1597605688-.sql" />
     <entry file="file://$PROJECT_DIR$/database/migrations/2020_08_16_190605_add_num_rows_to_tables.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="544">
@@ -664,33 +605,37 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/backup-1597680480-.sql">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/backup-1597693213-.sql">
+    <entry file="file://$PROJECT_DIR$/public/backup-1597680480-.sql" />
+    <entry file="file://$PROJECT_DIR$/public/backup-1597693213-.sql" />
+    <entry file="file://$PROJECT_DIR$/public/backup-1597693570-.sql" />
+    <entry file="file://$PROJECT_DIR$/public/backup-1597694034-.sql" />
+    <entry file="file://$PROJECT_DIR$/public/backup-1597694128-.sql" />
+    <entry file="file://$PROJECT_DIR$/public/backup-1597700358-.sql" />
+    <entry file="file://$PROJECT_DIR$/storage/logs/laravel.log" />
+    <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="408">
-          <caret line="24" column="20" lean-forward="true" selection-start-line="24" selection-start-column="20" selection-end-line="24" selection-end-column="20" />
+        <state relative-caret-position="119">
+          <caret line="7" column="6" selection-start-line="7" selection-start-column="6" selection-end-line="7" selection-end-column="6" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/backup-1597693570-.sql">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/backup-1597694034-.sql">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/backup-1597694128-.sql">
+    <entry file="file://$PROJECT_DIR$/public/backup-1597700824-.sql" />
+    <entry file="file://$PROJECT_DIR$/public/backup-1597701039-.sql" />
+    <entry file="file://$PROJECT_DIR$/public/backup-1597701204-.sql" />
+    <entry file="file://$PROJECT_DIR$/public/backup-1597701381-.sql" />
+    <entry file="file://$PROJECT_DIR$/public/backup-1597701601-.sql" />
+    <entry file="file://$PROJECT_DIR$/public/backup-1597701749-.sql" />
+    <entry file="file://$PROJECT_DIR$/public/backup-1597702062-.sql">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="746">
-          <caret line="1478" lean-forward="true" selection-start-line="1478" selection-end-line="1478" />
+        <state>
+          <caret lean-forward="true" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/DatabaseController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="730">
-          <caret line="223" column="5" lean-forward="true" selection-start-line="223" selection-start-column="5" selection-end-line="223" selection-end-column="5" />
+        <state relative-caret-position="289">
+          <caret line="66" column="16" selection-start-line="66" selection-start-column="16" selection-end-line="66" selection-end-column="16" />
           <folding>
             <element signature="e#48#65#0#PHP" expanded="true" />
           </folding>

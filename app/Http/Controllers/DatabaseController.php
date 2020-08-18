@@ -61,7 +61,7 @@
             foreach ($rez_array as $key => $value) {
                 $count = $count + $value;
 
-                if ($count <= $this->limit) {
+                if ($count <= $this->limit) {  //TODO а модет быть и тут
                     $array_tables[] = array($key => $value);
                     $table = new  Table();
                     $table->num_rows = $value;
@@ -139,18 +139,27 @@
             $tables = Table::select(['*'])->where('database_id', $database->id)->where('completed', 0)->get();
             $return = "";
 
+            /**/
+
             foreach ($tables as $item) {
                 $item->save();
                 $qwery_string = 'select * from ' . $item->name;
                 if ($item->all_rows != 1) {
-                    $qwery_string .= ' limit ' . $item->last_row;
-                    $qwery_string .= ' offset ' . intval($item->first_row - 1);
+                    $qwery_string .= ' limit ' . $this->limit;                //TODO косяк здесь! Он делает ежное число проходов, но не отступает.
+                    $qwery_string .= ' offset ' . intval($item->last_row - 1); //TODO или тут.
+                }
+
+                if($item->num_rows==$item->last_row){
+                    $item->completed = 1;
+                    $item->save();
                 }
 
                 if ($item->all_rows == 1) {
                     $item->completed = 1;
                     $item->save();
                 }
+                dump($qwery_string);
+
 
                 try {
                     $result = mysqli_query($link, $qwery_string);
