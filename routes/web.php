@@ -19,3 +19,6 @@ Route::get('/', function () {
 });
 
 Route::get('/backup', [DatabaseController::class, 'index']);
+
+Route::get('/input-data',[DatabaseController::class,'input'])->name('input-data');
+Route::post('/input-data',[DatabaseController::class,'store'])->name('store');

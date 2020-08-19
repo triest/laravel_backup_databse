@@ -28,16 +28,18 @@
             if ($database_id != null) {
                 $database = Database::findOrFail(intval($database_id));
             } else {
+                /*
                 $database = new Database();
                 $database->name = "sakura";
                 $database->save();
+                */
             }
-
+/*
             $this->host = '127.0.0.1';
             $this->user = 'root';
             $this->pass = '';
             $this->dbname = 'sakura';
-
+*/
             $rez_array = $this->count_entities($database);
 
             if (empty($rez_array)) {
@@ -163,7 +165,7 @@
             foreach ($tables as $item) {
                 $lock = "lock tables ' . $item->name .  WRITE";
 
-                $result = mysqli_query($link, $lock);
+                mysqli_query($link, $lock);
 
 
                 $item->save();
@@ -241,7 +243,7 @@
 
                 $lock = "unlock tables ' . $item->name .  WRITE";
 
-                $result = mysqli_query($link, $lock);
+                mysqli_query($link, $lock);
             }
 
 

@@ -29,12 +29,34 @@
             if ($database instanceof Database) {
                 return redirect('/backup?database_id=' . $database->id);
             } else {
-                return response()->json(true);
+                $database = Database::select(['*'])->where('id', $request->get('database_id'))->first();
+                //    return response()->json(true);
+                return view('success')->with(['database' => $database]);
             }
-
-
         }
 
+        public function input(Request $request)
+        {
+            return view("welcome");
+        }
+
+        public function store(Request $request)
+        {
+            $validatedData = $request->validate([
+                    'name' => 'required',
+                    'user' => 'required',
+                    'host' => 'required'
+            ]);
+
+            $database = new Database();
+            $database->name = $request->name;
+            $database->password = $request->password;
+            $database->host = $request->host;
+            $database->user = $request->user;
+            $database->save();
+
+            return redirect('/backup?database_id=' . $database->id);
+        }
 
     }
 
