@@ -18,6 +18,9 @@
     {
         public $database = null;
 
+        public $limit = 21;
+
+
         public function backup($database_id = null)
         {
 
@@ -36,7 +39,6 @@
             return $database;
         }
 
-        public $limit = 21;
 
         function mark_tables_and_rows($database, $rez_array)
         {
@@ -241,7 +243,7 @@
 
 
             if ($database->filename == "" || $database->filename == null) {
-                $fileName = $fileName = 'backup-' . time() . '-' . '.sql';
+                $fileName = $fileName = 'backup-' . time() . '.sql';
                 $database->filename = $fileName;
                 file_put_contents($fileName, $return, FILE_APPEND);
                 $database->save();
