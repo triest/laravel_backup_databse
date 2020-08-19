@@ -2,15 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b774f07d-ff95-4523-827d-af8deeac849a" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/base_coper.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/base_coper.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/bootstrap.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/bootstrap.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/sass/app.scss" beforeDir="false" afterPath="$PROJECT_DIR$/resources/sass/app.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/layouts/welcome.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/welcome.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Services/SDatabaseBackup.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Services/SDatabaseBackup.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -46,8 +39,8 @@
       <file leaf-file-name="DatabaseController.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/DatabaseController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="386">
-              <caret line="31" column="31" selection-start-line="31" selection-start-column="31" selection-end-line="31" selection-end-column="31" />
+            <state relative-caret-position="250">
+              <caret line="29" column="36" lean-forward="true" selection-start-line="29" selection-start-column="36" selection-end-line="29" selection-end-column="36" />
               <folding>
                 <element signature="e#48#65#0#PHP" expanded="true" />
               </folding>
@@ -64,23 +57,14 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="welcome.blade.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="welcome.blade.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resources/views/layouts/welcome.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="488">
-              <caret line="83" column="7" selection-start-line="83" selection-start-column="7" selection-end-line="83" selection-end-column="7" />
+            <state>
+              <caret lean-forward="true" />
               <folding>
                 <element signature="n#style#0;n#head#0;n#html#0;n#!!top" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="package.json" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/package.json">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="306">
-              <caret line="21" column="31" selection-start-line="21" selection-start-column="31" selection-end-line="21" selection-end-column="31" />
             </state>
           </provider>
         </entry>
@@ -90,6 +74,18 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="187">
               <caret line="11" column="34" selection-start-line="11" selection-start-column="34" selection-end-line="11" selection-end-column="34" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="SDatabaseBackup.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/Services/SDatabaseBackup.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="407">
+              <caret line="233" column="17" lean-forward="true" selection-start-line="233" selection-start-column="17" selection-end-line="233" selection-end-column="17" />
+              <folding>
+                <element signature="e#148#165#0#PHP" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -130,7 +126,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>user_target</find>
       <find>CREATE TABLE `requwest` (</find>
       <find>backup_tables</find>
       <find>view_history</find>
@@ -160,6 +155,7 @@
       <find>$qwery_string</find>
       <find>mysqli_num_fields</find>
       <find>rf_field</find>
+      <find>count_entities</find>
     </findStrings>
     <dirStrings>
       <dir>E:\openServer535\OSPanel\domains\base_coper\</dir>
@@ -194,14 +190,14 @@
         <option value="$PROJECT_DIR$/public/backup-1597782395-.sql" />
         <option value="$PROJECT_DIR$/resources/views/layout/welcome.blade.php" />
         <option value="$PROJECT_DIR$/routes/web.php" />
-        <option value="$PROJECT_DIR$/app/Services/SDatabaseBackup.php" />
         <option value="$PROJECT_DIR$/database/migrations/2020_08_19_054435_add_username_and_password_to_database.php" />
         <option value="$PROJECT_DIR$/resources/views/backup.blade.php" />
-        <option value="$PROJECT_DIR$/app/Http/Controllers/DatabaseController.php" />
         <option value="$PROJECT_DIR$/resources/views/success.blade.php" />
         <option value="$PROJECT_DIR$/package.json" />
         <option value="$PROJECT_DIR$/resources/views/welcome.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/layouts/welcome.blade.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/DatabaseController.php" />
+        <option value="$PROJECT_DIR$/app/Services/SDatabaseBackup.php" />
       </list>
     </option>
   </component>
@@ -477,7 +473,7 @@
       <workItem from="1597679464836" duration="13782000" />
       <workItem from="1597700196338" duration="2045000" />
       <workItem from="1597768676176" duration="250000" />
-      <workItem from="1597814596312" duration="5908000" />
+      <workItem from="1597814596312" duration="9294000" />
     </task>
     <task id="LOCAL-00001" summary="Add backup first part">
       <created>1597588131518</created>
@@ -542,17 +538,25 @@
       <option name="project" value="LOCAL" />
       <updated>1597855341265</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="add bootstrap">
+      <created>1597856175293</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1597856175293</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="85539000" />
+    <option name="totallyTimeSpent" value="88925000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Messages" order="7" />
       <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" weight="0.32946146" />
       <window_info anchor="bottom" id="Migrations" order="7" />
       <window_info anchor="bottom" id="Database Changes" order="7" show_stripe_button="false" />
@@ -574,7 +578,6 @@
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32946146" />
-      <window_info anchor="bottom" id="Messages" order="7" />
     </layout>
     <layout-to-restore>
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -722,16 +725,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Services/SDatabaseBackup.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="417">
-          <caret line="31" column="21" selection-start-line="31" selection-start-column="21" selection-end-line="31" selection-end-column="21" />
-          <folding>
-            <element signature="e#148#165#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/database/migrations/2020_08_19_054435_add_username_and_password_to_database.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="391">
@@ -749,27 +742,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/DatabaseController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="386">
-          <caret line="31" column="31" selection-start-line="31" selection-start-column="31" selection-end-line="31" selection-end-column="31" />
-          <folding>
-            <element signature="e#48#65#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/backup.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
           <caret line="5" column="11" selection-start-line="5" selection-start-column="11" selection-end-line="5" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/package.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="21" column="31" selection-start-line="21" selection-start-column="31" selection-end-line="21" selection-end-column="31" />
         </state>
       </provider>
     </entry>
@@ -790,12 +766,39 @@
     <entry file="file://$PROJECT_DIR$/resources/views/welcome.blade.php">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
+    <entry file="file://$PROJECT_DIR$/package.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="357">
+          <caret line="21" column="31" selection-start-line="21" selection-start-column="31" selection-end-line="21" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/layouts/welcome.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="488">
-          <caret line="83" column="7" selection-start-line="83" selection-start-column="7" selection-end-line="83" selection-end-column="7" />
+        <state>
+          <caret lean-forward="true" />
           <folding>
             <element signature="n#style#0;n#head#0;n#html#0;n#!!top" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/DatabaseController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="250">
+          <caret line="29" column="36" lean-forward="true" selection-start-line="29" selection-start-column="36" selection-end-line="29" selection-end-column="36" />
+          <folding>
+            <element signature="e#48#65#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Services/SDatabaseBackup.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="407">
+          <caret line="233" column="17" lean-forward="true" selection-start-line="233" selection-start-column="17" selection-end-line="233" selection-end-column="17" />
+          <folding>
+            <element signature="e#148#165#0#PHP" expanded="true" />
           </folding>
         </state>
       </provider>

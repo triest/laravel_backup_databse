@@ -11,15 +11,11 @@
 
     use App\Database;
     use App\Table;
+    use Illuminate\Support\Facades\Redirect;
 
 
     class SDatabaseBackup
     {
-        public $host,
-                $user = 'root',
-                $pass = '',
-                $dbname = 'sakura',
-                $link;
         public $database = null;
 
         public function backup($database_id = null)
@@ -27,19 +23,7 @@
 
             if ($database_id != null) {
                 $database = Database::findOrFail(intval($database_id));
-            } else {
-                /*
-                $database = new Database();
-                $database->name = "sakura";
-                $database->save();
-                */
             }
-/*
-            $this->host = '127.0.0.1';
-            $this->user = 'root';
-            $this->pass = '';
-            $this->dbname = 'sakura';
-*/
             $rez_array = $this->count_entities($database);
 
             if (empty($rez_array)) {
@@ -112,11 +96,20 @@
 
         function count_entities(Database $database, $tables = "*") // считат
         {
-            $link = mysqli_connect($this->host, $this->user, $this->pass, $this->dbname);
+            try {
+                $link = mysqli_connect($database->host, $database->user, $database->password, $database->name);
+            } catch (\Exception $exception) {
+                echo $exception->getMessage();
+                exit(1);
+            }
 
 
             $tables = array();
             $result = mysqli_query($link, 'SHOW TABLES');
+            if (mysqli_connect_errno()) {
+                printf("Соединение не удалось: %s\n", mysqli_connect_error());
+                exit();
+            }
             while ($row = mysqli_fetch_row($result)) {
                 $tableTemp = Table::select(['*'])->where("database_id", $database->id)->where('name', $row[0])->first();
                 if ($tableTemp != null) {
@@ -148,12 +141,12 @@
 
         function backup_tables(Database $database)
         {
-            $link = mysqli_connect($this->host, $this->user, $this->pass, $this->dbname);
-
-            if (mysqli_connect_errno()) {
-                echo "Failed to connect to MySQL: " . mysqli_connect_error();
-                exit;
+            try {
+                $link = mysqli_connect($database->host, $database->user, $database->password, $database->name);
+            } catch (\Exception $exception) {
+                return Redirect::back()->withErrors(['msg', $exception->getMessage()]);
             }
+
             mysqli_query($link, "SET NAMES 'utf8'");
             //   $tables = $database->tables()->get();
 
