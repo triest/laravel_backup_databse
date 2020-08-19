@@ -7,12 +7,14 @@
         {{ csrf_field() }}
 
         <div class="form-group">
+            <h4>
+                Введите данные пля подключения
+            </h4>
 
             <label for="title">Хостинг:</label>
-            <input type="text" class="form-control" id="host" name="host" placeholder="Хост"
-                   required>
-            @if($errors->has('name'))
-                <font color="red"><p>  {{$errors->first('name')}}</p></font>
+            <input type="text" class="form-control" id="host" name="host" placeholder="Хост" required>
+            @if($errors->has('host'))
+                <font color="red"><p>  {{$errors->first('host')}}</p></font>
             @endif
         </div>
 

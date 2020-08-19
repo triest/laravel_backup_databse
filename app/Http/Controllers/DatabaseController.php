@@ -30,7 +30,6 @@
                 return redirect('/backup?database_id=' . $database->id);
             } else {
                 $database = Database::select(['*'])->where('id', $request->get('database_id'))->first();
-                //    return response()->json(true);
                 return view('success')->with(['database' => $database]);
             }
         }
