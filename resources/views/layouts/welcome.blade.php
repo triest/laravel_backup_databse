@@ -62,6 +62,7 @@
             margin-bottom: 30px;
         }
     </style>
+    <link rel="stylesheet" href="css/app.css">
 </head>
 <body>
 <div class="flex-center position-ref full-height">
@@ -80,9 +81,6 @@
     @endif
 
     <div class="content">
-        <div class="title m-b-md">
-            Laravel
-        </div>
 
         <div class="links">
             @yield('content')
@@ -98,5 +96,6 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
         integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
         crossorigin="anonymous"></script>
+<script src="js/app.js" charset="utf-8"></script>
 </body>
 </html>
